@@ -2,13 +2,13 @@
 #include <stdlib.h>
 
 typedef struct noitem{
-    int info;        // informação a ser colocada;
-    struct nodeitem *next;  //apontar para o proximo membro;
+    int info;       
+    struct nodeitem *next;  
 }no;
 
 
 typedef struct{
-    no *topo; // unico parametro para acessar a pilha é o ponteiro topo;
+    no *topo;
 }stack;
 
 
@@ -18,8 +18,8 @@ void push(stack *s, int value);
 int pop(stack *s);
 int top(stack *s);
 int IsStackEmpty(stack *s);
-int IsStackFull (stack *s); // NUNCA FICARA FULL POIS SO ADICIONA O QUE QUER;
-no *NewNo(int value); // criar um novo no;
+int IsStackFull (stack *s); 
+no *NewNo(int value); ;
 
 
 
@@ -52,16 +52,16 @@ int IsStackEmpty(stack *s){
 }
 
 no *NewNo(int value){
-    no *n = (no *) malloc(sizeof(no)); //cria espaço na memoria pro novo no;
-    n->info = value; // informação desejada
-    n->next = NULL; // novo no nao aponta pra ninguem;
+    no *n = (no *) malloc(sizeof(no)); 
+    n->info = value; 
+    n->next = NULL; 
     return n;  
 }
 
 void push(stack *s, int value){
-    no *n = NewNo(value);  //recebo o entedeço do no criado em (newno());
-    n->next = s->topo;  // o ponteiro do novo elemento aponta pro elemento anterior;
-    s->topo = n;    //  topo vai apontar pro novo elemento;
+    no *n = NewNo(value); 
+    n->next = s->topo; 
+    s->topo = n;   
 }
 
 
@@ -80,12 +80,12 @@ int pop(stack *s){
     }
 
     int aux;
-    no *n;  //cria-se uma variavel do tipo no para armazenar a info e liberar memoria;
+    no *n;  
 
-    n = s->topo;  //variavel recebe o endereço do topo
-    aux = n->info;  //aux armazena o valor contido no NO anterior
-    s->topo = n->next;   // topo aponta pro topo anterior;
-    free(n);  //libera memoria;
+    n = s->topo; 
+    aux = n->info; 
+    s->topo = n->next;  
+    free(n);  
 
-    return aux;  //retorna o valor que estava contido no NOVO NO;
+    return aux;  
 }
